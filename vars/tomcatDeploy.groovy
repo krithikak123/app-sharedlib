@@ -1,6 +1,6 @@
 def call(ip,user,credId){
   sshagent([credId]) {
-    ips.each{
+    ips.each {
       echo "deploying on ${it}"
       sh "scp -o StrictHostKeyChecking=no target/*.war ${user}@${it}:/opt/tomcat8/webapps/app.war"
       sh "ssh ${user}@${it} /opt/tomcat8/bin/shutdown.sh"
